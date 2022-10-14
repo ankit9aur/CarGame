@@ -119,7 +119,7 @@
                 function score1() {
                     score.innerText = "Score: " + player.score + "\nSpeed: " + player.speed;
                 }
-            setInterval(play, 2000);
+            let myInterval=setInterval(play, 2000);
             function play(){
                 player.score+=10;
             }
@@ -165,8 +165,7 @@
                 
                 enemyCarList.forEach(function(enemyCar) {
                     if(isCollide(myCar, enemyCar)){
-                        clearInterval(play);
-                        clearInterval(score1);
+                        clearInterval(myInterval);
                         endGame();
                     }
                     if(enemyCar.y >= 750){
