@@ -162,13 +162,12 @@
                 enemyCarList.forEach(function(enemyCar) {
                     if(isCollide(myCar, enemyCar)){
                         endGame();
-                        player.speed=5;
                     }
                     pos2=enemyCar.getBoundingClientRect();
                     pos1=myCar.getBoundingClientRect();
-                    if(pos2.bottom==pos1.top){
+                 
                         player.score+=10;
-                    }
+                    
                     if(enemyCar.y >= 750){
                         enemyCar.y = -300;
                         enemyCar.style.left = Math.floor(Math.random() * 350) + "px";
