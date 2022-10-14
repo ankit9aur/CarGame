@@ -138,6 +138,12 @@
                          (aRect.right < bRect.left) || 
                          (aRect.left > bRect.right))
             }
+            
+            function isEqual(a,b){
+                aRect = a.getBoundingClientRect();
+                bRect = b.getBoundingClientRect();
+                return a.top == b.top
+            }
 
             function moveLines() {
                 let lines = document.querySelectorAll('.lines');
@@ -165,9 +171,9 @@
                     }
                     pos2=enemyCar.getBoundingClientRect();
                     pos1=myCar.getBoundingClientRect();
-                 
+                    if(isEqual(myCar, enemyCar)){
                         player.score+=10;
-                    
+                    }
                     if(enemyCar.y >= 750){
                         enemyCar.y = -300;
                         enemyCar.style.left = Math.floor(Math.random() * 350) + "px";
