@@ -115,10 +115,14 @@
             document.addEventListener('keydown', keyDown);
             document.addEventListener('keyup', keyUp);
 
-            setInterval(score1, 1);
+            setInterval(score1, 0.01);
                 function score1() {
                     score.innerText = "Score: " + player.score + "\nSpeed: " + player.speed;
                 }
+            setInterval(play, 1000);
+            function play(){
+                player.score+=10;
+            }
             function keyDown(e){
                 e.preventDefault();
                 keys[e.key] = true;
@@ -137,12 +141,6 @@
                          (aRect.top > bRect.bottom) || 
                          (aRect.right < bRect.left) || 
                          (aRect.left > bRect.right))
-            }
-            
-            function isEqual(a,b){
-                aRect = a.getBoundingClientRect();
-                bRect = b.getBoundingClientRect();
-                return a.top == b.top
             }
 
             function moveLines() {
@@ -168,11 +166,6 @@
                 enemyCarList.forEach(function(enemyCar) {
                     if(isCollide(myCar, enemyCar)){
                         endGame();
-                    }
-                    pos2=enemyCar.getBoundingClientRect();
-                    pos1=myCar.getBoundingClientRect();
-                    if(isEqual(myCar, enemyCar)){
-                        player.score+=10;
                     }
                     if(enemyCar.y >= 750){
                         enemyCar.y = -300;
